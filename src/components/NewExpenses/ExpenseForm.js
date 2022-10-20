@@ -10,18 +10,30 @@ const ExpenseForm = (props) => {
       ...enteredExpenseData,
       id: Math.random().toString(),
     };
-    props.addExpense(expenseData);
+    props.passData(expenseData);
+    setShow(false);
   };
 
-  const showChart = () => {
-    if (show === false) {
-    } else if (show === true) {
-      return <NewExpense />;
-    }
+  const startEditingHandler = () => {
+    setShow(true);
+  };
+
+  const stopEditingHandler = () => {
+    setShow(false);
   };
 
   console.log(show, "show state");
-  return <div className="new-expense"></div>;
+  return (
+    <div className="new-expense">
+      {!show && <button onClick={startEditingHandler}>Add New Expense</button>}
+      {show && (
+        <NewExpense
+          onSaveData={saveExpenseData}
+          onCancel={stopEditingHandler}
+        />
+      )}
+    </div>
+  );
 };
 
 export default ExpenseForm;
