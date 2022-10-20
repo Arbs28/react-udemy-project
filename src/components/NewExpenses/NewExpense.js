@@ -25,10 +25,11 @@ const NewExpense = (props) => {
 
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
     };
-    props.passData(expenseData);
+
+    props.onSaveData(expenseData);
     clear();
   };
   return (

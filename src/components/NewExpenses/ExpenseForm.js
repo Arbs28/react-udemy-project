@@ -10,7 +10,7 @@ const ExpenseForm = (props) => {
       ...enteredExpenseData,
       id: Math.random().toString(),
     };
-    props.passData(expenseData);
+    props.addExpense(expenseData);
     setShow(false);
   };
 
